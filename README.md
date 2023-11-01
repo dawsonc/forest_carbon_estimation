@@ -2,6 +2,8 @@
 
 This repository contains code for estimating the above-ground biomass carbon in forests, using data collected from drones.
 
+print("Hello")
+
 ## Installation
 
 This project uses [`poetry`](https://python-poetry.org/docs/) for dependency management. You can install poetry with the instructions [here](https://python-poetry.org/docs/#installation). To install this package and its dependencies, and initialize the development environment, run
