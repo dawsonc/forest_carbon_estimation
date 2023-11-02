@@ -4,14 +4,18 @@ on the paper "Improved allometric models to estimate the aboveground biomass of 
 trees" by Chave et. al.
 """
 
+from beartype import beartype
 
+
+@beartype
 def create_AGB_function(coef, exp):
     """
     Returns a function that takes in the parameters rho, d, and h and outputs the
     estimated AGB.
+    The model is in an exponential form: AGB = coef * (rho * d^2 * h) ^ exp.
 
     Arguments:
-    coef, exp: the parameters that were fitted to the exponential AGB model.
+    coef (float), exp (float): the parameters that were fitted to the exponential AGB model.
     """
 
     def AGB_function(rho, d, h):
@@ -20,13 +24,14 @@ def create_AGB_function(coef, exp):
     return AGB_function
 
 
+@beartype
 def apply_AGB_model(agb, rho, d, h):
     """
     Returns the estimate for the AGB given a model to apply (agb), rho, d, and h.
 
     Arguments:
-    rho: wood specific gravity (g/cm^3)
-    d: trunk diameter (cm)
-    h: total tree height (m)
+    rho (float): wood specific gravity (g/cm^3)
+    d (float): trunk diameter (cm)
+    h (float): total tree height (m)
     """
     return agb(rho, d, h)
