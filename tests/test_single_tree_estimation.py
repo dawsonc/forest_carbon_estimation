@@ -1,5 +1,6 @@
 import unittest
-import single_tree_estimation
+
+from forest_carbon import single_tree_estimation
 
 # The class you're testing
 # class YourClass:
