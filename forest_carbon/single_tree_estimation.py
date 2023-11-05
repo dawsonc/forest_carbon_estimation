@@ -5,10 +5,13 @@ trees" by Chave et. al.
 """
 
 from beartype import beartype
+from typing import Callable
+
+AGBModel = Callable[[float, float, float], float]
 
 
 @beartype
-def create_AGB_function(coef, exp):
+def create_AGB_function(coef: float, exp: float) -> AGBModel:
     """
     Returns a function that takes in the parameters rho, d, and h and outputs the
     estimated AGB.
@@ -25,7 +28,7 @@ def create_AGB_function(coef, exp):
 
 
 @beartype
-def apply_AGB_model(agb, rho, d, h):
+def apply_AGB_model(agb: AGBModel, rho: float, d: float, h: float) -> float:
     """
     Returns the estimate for the AGB given a model to apply (agb), rho, d, and h.
 
