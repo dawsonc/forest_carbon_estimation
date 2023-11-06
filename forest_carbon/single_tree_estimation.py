@@ -5,9 +5,9 @@ trees" by Chave et. al.
 """
 
 from beartype import beartype
-from typing import Callable
+from beartype.typing import Callable, TypeAlias
 
-AGBModel = Callable[[float, float, float], float]
+AGBModel: TypeAlias = Callable[[float, float, float], float]
 
 
 @beartype
