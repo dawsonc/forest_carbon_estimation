@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "forest-carbon-estimation"
+name = "forest-carbon"
 version = "0.0.1"
 description = "Estimating forest biomass carbon using drone data"
 authors = ["Charles Dawson <charles.dwsn@gmail.com>"]
 readme = "README.md"
-packages = [{include = "forest_carbon_estimation"}]
+packages = [{include = "forest_carbon"}]
 
 [tool.poetry.dependencies]
 python = "<3.13,>=3.9"
