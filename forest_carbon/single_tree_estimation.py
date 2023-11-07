@@ -6,12 +6,15 @@ trees" by Chave et. al.
 
 from beartype import beartype
 from beartype.typing import Callable, TypeAlias
+import math
 
 AGBModel: TypeAlias = Callable[[float, float, float], float]
 
 
 @beartype
-def create_AGB_function(coef: float, exp: float) -> AGBModel:
+def create_AGB_function(
+    coef: float, 
+    exp: float) -> AGBModel:
     """
     Returns a function that takes in the parameters rho, d, and h and outputs the
     estimated AGB.
@@ -28,7 +31,11 @@ def create_AGB_function(coef: float, exp: float) -> AGBModel:
 
 
 @beartype
-def apply_AGB_model(agb: AGBModel, rho: float, d: float, h: float) -> float:
+def apply_AGB_model(
+    agb: AGBModel, 
+    rho: float, 
+    d: float, 
+    h: float) -> float:
     """
     Returns the estimate for the AGB given a model to apply (agb), rho, d, and h.
 
@@ -38,3 +45,47 @@ def apply_AGB_model(agb: AGBModel, rho: float, d: float, h: float) -> float:
     h (float): total tree height (m)
     """
     return agb(rho, d, h)
+
+
+@beartype
+def create_AGB_function_no_height(
+    const: float,
+    coef_e: float,
+    coef_rho: float, 
+    coef_d: float, 
+    coef_d_squared: float) -> AGBModel:
+    """
+    Returns a function that takes in the parameters rho, d, and e and outputs the
+    estimated AGB.
+    The model is in an exponential form: AGB = coef * (rho * d^2 * h) ^ exp.
+
+    Arguments:
+    const (float),
+    coef_e (float),
+    coef_rho (float), 
+    coef_d (float), 
+    coef_d_squared (float)
+     the parameters that were fitted to the exponential AGB model.
+    """
+
+    def AGB_function(rho, d, e):
+        return math.exp(const - coef_e * e + coef_rho * math.log(rho) + coef_d * math.log(d) - coef_d_squared * math.log(d^2))
+
+    return AGB_function
+
+
+@beartype
+def apply_AGB_model_no_height(
+    agb: AGBModel, 
+    rho: float, 
+    d: float, 
+    e: float) -> float:
+    """
+    Returns the estimate for the AGB given a model to apply (agb), rho, d, and e.
+
+    Arguments:
+    rho (float): wood specific gravity (g/cm^3)
+    d (float): trunk diameter (cm)
+    e (float): environmental strees
+    """
+    return agb(rho, d, e)
