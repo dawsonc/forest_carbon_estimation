@@ -2,8 +2,10 @@ import json
 from beartype import beartype
 from beartype.typing import Callable, TypeAlias
 import math
+import config
 
 AGBModel: TypeAlias = Callable[[float, float, float], float]
+
 
 @beartype
 def load_tree_data_from_json(
@@ -52,6 +54,7 @@ def load_tree_data_from_json(
         print("Invalid JSON format.")
         return None
 
+
 def choosing_the_model() -> AGBModel:
     """
     Function to decide which model to use and create the actual model.
@@ -63,3 +66,25 @@ def choosing_the_model() -> AGBModel:
     #Search for e
 
     pass
+
+
+def apply_model(model, model_name):
+    """
+    Takes the chosen model, the name of the model, and applies it to the data
+    """
+    tree_data = load_tree_data_from_json(config.PATH_TO_DATA)
+
+    for tree in tree_data:
+        if model_name == "Tree specific":
+            # Write code to apply model
+            pass
+
+        elif model_name == "General with height":
+            # Write code to apply model
+            pass
+
+        elif model_name == "General no height":
+            # Write code to apply model
+            pass
+
+    return tree_data
