@@ -1,0 +1,131 @@
+Taxa,Genus and species,Common name,FIA species code,Wood specific gravity,Group
+"Abies , 0.35 spg*",Abies balsamea,"Fir, balsam",12,0.33,Conifer
+"Abies , 0.35 spg*",A. fraseri,"Fir, Fraser",16,0.33,Conifer
+"Abies , 0.35 spg*",A. lasiocarpa,"Fir, subalpine",19,0.31,Conifer
+Abies ≥ 0.35 spg,A. amabilis,"Fir, Pacific silver",11,0.4,Conifer
+Abies ≥ 0.35 spg,A. concolor,"Fir, white",15,0.37,Conifer
+Abies ≥ 0.35 spg,A. grandis,"Fir, grand",17,0.35,Conifer
+Abies ≥ 0.35 spg,A. magnifica,"Fir, California red",20,0.36,Conifer
+Abies ≥ 0.35 spg,A. procera,"Fir, noble",22,0.37,Conifer
+Abies ≥ 0.35 spg,Abies spp.,"Fir, Pacific silver-noble-other",10,0.39,Conifer
+"Cupressaceae , 0.30 spg",Thuja occidentalis,"Cedar, northern white",241,0.29,Conifer
+Cupressaceae 0.30–0.39 spg,Calocedrus decurrens,incense-cedar,81,0.35,Conifer
+Cupressaceae 0.30–0.39 spg,Sequoiadendron giganteum,"Sequoia, giant",212,0.34,Conifer
+Cupressaceae 0.30–0.39 spg,T. plicata,"Cedar, western red",242,0.31,Conifer
+Cupressaceae ≥ 0.40 spg,Chamaecyparis nootkatensis,"Cedar, Alaska",42,0.42,Conifer
+Cupressaceae ≥ 0.40 spg,Juniperus virginiana,"Juniper, eastern redcedar",68,0.44,Conifer
+Larix,Larix laricina,Tamarack,71,0.49,Conifer
+Larix,L. occidentalis,"Tamarack, western larch",73,0.48,Conifer
+Larix,L. spp.,"Tamarack, larch (introduced)",70,0.49,Conifer
+"Picea , 0.35 spg",Picea engelmannii,"Spruce, Engelmann",93,0.33,Conifer
+"Picea , 0.35 spg",P. sitchensis,"Spruce, Sitka",98,0.33,Conifer
+Picea ≥ 0.35 spg,P. abies,"Spruce, Norway",91,0.36,Conifer
+Picea ≥ 0.35 spg,P. glauca,"Spruce, white",94,0.37,Conifer
+Picea ≥ 0.35 spg,P. mariana,"Spruce, black",95,0.38,Conifer
+Picea ≥ 0.35 spg,P. rubens,"Spruce, red",97,0.37,Conifer
+"Pinus , 0.45 spg",Pinus albicaulis,"Pine, whitebark",101,0.43,Conifer
+"Pinus , 0.45 spg",P. arizonica,"Pine, Arizona",135,0.43,Conifer
+"Pinus , 0.45 spg",P. banksiana,"Pine, jack",105,0.4,Conifer
+"Pinus , 0.45 spg",P. contorta,"Pine, lodgepole",108,0.38,Conifer
+"Pinus , 0.45 spg",P. jeffreyi,"Pine, Jeffrey",116,0.37,Conifer
+"Pinus , 0.45 spg",P. lambertiana,"Pine, sugar",117,0.34,Conifer
+"Pinus , 0.45 spg",P. leiophylla,"Pine, Chihuahua",118,0.43,Conifer
+"Pinus , 0.45 spg",P. monticola,"Pine, western white",119,0.36,Conifer
+"Pinus , 0.45 spg",P. ponderosa,"Pine, ponderosa",122,0.38,Conifer
+"Pinus , 0.45 spg",P. resinosa,"Pine, red",125,0.41,Conifer
+"Pinus , 0.45 spg",Pinus spp.,"Pine, ponderosa-lodgepole-sugar",100,0.37,Conifer
+"Pinus , 0.45 spg",P. strobus,"Pine, eastern white",129,0.34,Conifer
+Pinus ≥ 0.45 spg,P. echinata,"Pine, shortleaf",110,0.47,Conifer
+Pinus ≥ 0.45 spg,P. elliottii,"Pine, slash",111,0.54,Conifer
+Pinus ≥ 0.45 spg,P. palustris,"Pine, longleaf",121,0.54,Conifer
+Pinus ≥ 0.45 spg,P. rigida,"Pine, pitch",126,0.47,Conifer
+Pinus ≥ 0.45 spg,P. taeda,"Pine, loblolly",131,0.47,Conifer
+Pseudotsuga,Pseudotsuga menziesii,Douglas-fir,202,0.45,Conifer
+"Tsuga , 0.40 spg",Tsuga canadensis,"Hemlock, eastern",261,0.38,Conifer
+Tsuga ≥ 0.40 spg,T. heterophylla,"Hemlock, western",263,0.42,Conifer
+Tsuga ≥ 0.40 spg,T. mertensiana,"Hemlock, mountain",264,0.42,Conifer
+"Aceraceae , 0.50 spg*",Aceraceae,"Maple, bigleaf",312,0.44,Hardwood
+"Aceraceae , 0.50 spg*",Aceraceae,"Maple, striped",315,0.44,Hardwood
+"Aceraceae , 0.50 spg*",Aceraceae,"Maple, red",316,0.49,Hardwood
+"Aceraceae , 0.50 spg*",Aceraceae,"Maple, silver",317,0.44,Hardwood
+"Aceraceae , 0.50 spg*",Aceraceae,"Maple, mountain",319,0.47,Hardwood
+Aceraceae ≥ 0.50 spg,Aceraceae,"Maple, sugar",318,0.56,Hardwood
+"Betulaceae , 0.40 spg",Betulaceae,"Alder, red",351,0.37,Hardwood
+"Betulaceae , 0.40 spg",Betulaceae,"Alder, sitka",350,0.37,Hardwood
+Betulaceae 0.40–0.49 spg,Betulaceae,"Birch, paper",375,0.48,Hardwood
+Betulaceae 0.40–0.49 spg,Betulaceae,"Birch, gray",379,0.45,Hardwood
+Betulaceae 0.50–0.59 spg,Betulaceae,"Birch, yellow",371,0.55,Hardwood
+Betulaceae ≥ 0.60 spg,Betulaceae,"Birch, sweet",372,0.60,Hardwood
+Betulaceae ≥ 0.60 spg,Betulaceae,Hophornbeam,701,0.63,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Cornaceae,Dogwood,491,0.64,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Cornaceae,"Tupelo, water",691,0.46,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Cornaceae,"Tupelo, blackgum",693,0.46,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Ericaceae,"Madrone, Pacific",361,0.58,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Ericaceae,Sourwood,711,0.50,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Ericaceae,California bay laurel,981,0.51,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Lauraceae,Sassafras,931,0.42,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Platanaceae,Sycamore,731,0.46,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Rosaceae,Serviceberry,356,0.66,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Rosaceae,"Cherry, pin",761,0.47,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Rosaceae,"Cherry, black",762,0.47,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Rosaceae,"Cherry, Chokecherry",763,0.47,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Rosaceae,"Sorbus, mtn. ash",935,0.60,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Ulmaceae,Elm,972,0.46,Hardwood
+Cornaceae/Ericaceae/Lauraceae/Platanaceae/Rosaceae/Ulmaceae,Ulmaceae,Elm,970,0.54,Hardwood
+"Fabaceae/Juglandaceae, Carya",Juglandaceae,Pecan,404,0.60,Hardwood
+"Fabaceae/Juglandaceae, Carya",Juglandaceae,"Hickory, shagbark",407,0.64,Hardwood
+"Fabaceae/Juglandaceae, Carya",Juglandaceae,Hickory,400,0.62,Hardwood
+"Fabaceae/Juglandaceae, other",Fabaceae,"Locust, black",901,0.66,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Chestnut, American",421,0.40,Hardwood
+"Fagaceae, deciduous",Fagaceae,Beech,531,0.56,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, white",802,0.60,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, scarlet",806,0.60,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, pin",809,0.59,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, red southern",812,0.52,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, bur",823,0.58,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, water",827,0.56,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, chestnut",832,0.57,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, red northern",833,0.56,Hardwood
+"Fagaceae, deciduous",Fagaceae,Oaks,800,0.59,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, post",835,0.60,Hardwood
+"Fagaceae, deciduous",Fagaceae,"Oak, black",837,0.56,Hardwood
+"Fagaceae, evergreen",Fagaceae,"Chinkapin, golden",431,0.42,Hardwood
+"Fagaceae, evergreen",Fagaceae,Tanoak,631,0.58,Hardwood
+"Fagaceae, evergreen",Fagaceae,"Oak, blue",807,0.59,Hardwood
+"Fagaceae, evergreen",Fagaceae,"Oak, laurel",820,0.56,Hardwood
+"Fagaceae, evergreen",Fagaceae,"Oak, dwarf live",841,0.59,Hardwood
+Hamamelidaceae,Hamamelidaceae,Sweetgum,611,0.46,Hardwood
+Hippocastanaceae/Tiliaceae,Hippocastanaceae Aesculus flava,"Aesculus, yellow buckeye",332,0.33,Hardwood
+Hippocastanaceae/Tiliaceae,Tiliaceae,Basswood,951,0.32,Hardwood
+Hippocastanaceae/Tiliaceae,Tiliaceae,"Basswood, white",952,0.32,Hardwood
+Magnoliaceae,Magnoliaceae,Tulip poplar,621,0.40,Hardwood
+Magnoliaceae,Magnoliaceae,"Magnolia, Fraser",655,0.40,Hardwood
+Magnoliaceae,Magnoliaceae,"Magnolia, sweetbay",653,0.42,Hardwood
+"Oleaceae , 0.55 spg",Oleaceae,"Ash, black",543,0.45,Hardwood
+"Oleaceae , 0.55 spg",Oleaceae,"Ash, green",544,0.53,Hardwood
+"Oleaceae , 0.55 spg",Oleaceae,Ash,540,0.51,Hardwood
+Oleaceae ≥ 0.55 spg,Oleaceae,"Ash, white",541,0.55,Hardwood
+"Salicaceae , 0.35 spg",Salicaceae,"Populus, balasm poplar",741,0.31,Hardwood
+"Salicaceae , 0.35 spg",Salicaceae,"Populus, black Cottonwood",747,0.31,Hardwood
+"Salicaceae , 0.35 spg",Salicaceae,"Populus, cottonwood",740,0.34,Hardwood
+Salicaceae ≥ 0.35 spg,Salicaceae,"Populus, cottonwood eastern",742,0.37,Hardwood
+Salicaceae ≥ 0.35 spg,Salicaceae,"Populus, aspen bigtooth",743,0.36,Hardwood
+Salicaceae ≥ 0.35 spg,Salicaceae,"Populus, cottonwood",740,0.35,Hardwood
+Salicaceae ≥ 0.35 spg,Salicaceae,"Populus, aspen quaking",746,0.35,Hardwood
+Salicaceae ≥ 0.35 spg,Salicaceae,"Willow, white",927,0.36,Hardwood
+Salicaceae ≥ 0.35 spg,Salicaceae,Willow,920,0.36,Hardwood
+Cupressaceae,Cupressaceae,"Cypress, pygmy",50,0.41,Woodland
+Cupressaceae,Cupressaceae,"Juniper, oneseed",69,0.58,Woodland
+Cupressaceae,Cupressaceae,"Juniper, western",64,0.45,Woodland
+Cupressaceae,Cupressaceae,"Juniper, Utah",65,0.54,Woodland
+Fabaceae/Rosaceae,Fabaceae,"Paloverde, yellow",-1,0.60,Woodland
+Fabaceae/Rosaceae,Fabaceae,Mesquite,755,0.78,Woodland
+Fabaceae/Rosaceae,Rosaceae,Mountain mahogany,475,0.81,Woodland
+Fabaceae/Rosaceae,Rosaceae,Mountain Mahogany,477,0.81,Woodland
+Fagaceae,Fagaceae,"Oak, blue",807,0.59,Woodland
+Fagaceae,Fagaceae,"Oak, Gambel",814,0.61,Woodland
+Fagaceae,Fagaceae,"Oak, silverleaf",843,0.59,Woodland
+Fagaceae,Fagaceae,"Oak, evergreen spp.",850,0.58,Woodland
+Pinaceae,Pinaceae,"Pine, pinyon",140,0.51,Woodland
+Pinaceae,Pinaceae,"Pine, pinyon",106,0.51,Woodland
+Pinaceae,Pinaceae,"Pine, pinyon singleleaf",133,0.51,Woodland
