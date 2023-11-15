@@ -5,10 +5,10 @@ trees" by Chave et. al.
 """
 
 from beartype import beartype
-from beartype.typing import Callable, TypeAlias
+from beartype.typing import Callable
 import math
 
-AGBModel: TypeAlias = Callable[[float, float, float], float]
+AGBModel=  Callable[[float, float, float], float]
 
 
 @beartype
@@ -69,7 +69,7 @@ def create_AGB_function_no_height(
     """
 
     def AGB_function(rho, d, e):
-        return math.exp(const - coef_e * e + coef_rho * math.log(rho) + coef_d * math.log(d) - coef_d_squared * math.log(d^2))
+        return math.exp(const - coef_e * e + coef_rho * math.log(rho) + coef_d * math.log(d) - coef_d_squared * math.log(d**2))
 
     return AGB_function
 

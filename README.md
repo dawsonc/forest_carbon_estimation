@@ -1,8 +1,6 @@
 # Forest Carbon Estimation 🌲🌳💨
 
-This repository contains code for estimating the above-ground biomass carbon in forests, using data collected from drones.
-
-print("Hello")
+This repository contains code for estimating the above-ground biomass carbon in forests, using a database that identifies the linear regression parameters for the biomass according the tree's taxa, group, and specific gravity.
 
 ## Installation
 
