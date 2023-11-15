@@ -1,17 +1,18 @@
 import csv
 import pandas as pd
 import numpy as np
+from typing import Tuple
 
-def load_taxa_agb_model_data(filename):
+def load_taxa_agb_model_data(filename:str) -> pd.DataFrame:
    """
-   Reads the contents of a file, with data given as a csv file. Processes the data by creating a dataframe
-   that has two additional columns: the lower and upper bounds of the specific gravity. 
+    Reads the contents of a file, with data given as a csv file. Processes the data by creating a dataframe
+    that has two additional columns: the lower and upper bounds of the specific gravity. 
 
-   Args: 
-      filename - the name of a data file as a string
+    Args: 
+        filename (str): The name of a data file.
 
-   Returns:
-      df - a dataframe of the processed data
+    Returns:
+        df (pd.DataFrame): A dataframe of the processed data.
    """
 
    datab = pd.read_csv(filename)
@@ -51,7 +52,10 @@ def load_taxa_agb_model_data(filename):
    return df
   
 
-def abg_biomass_model(group, taxa, spg, df):
+def abg_biomass_model(group:str, 
+                     taxa: str, 
+                     spg: float, 
+                     df: pd.DataFrame) -> Tuple[float, float, float, str]:
    """ 
    Finds the corresponding linear regression model and "class" of the diameter of a tree 
    by its group, taxa, and specific gravity, which is passed into the function by the user. 
@@ -102,7 +106,10 @@ def abg_biomass_model(group, taxa, spg, df):
          return b0, b1, Rsquared, diameterClass
       
 
-def biomass(b0, b1, diameterClass, dbhvalue):
+def biomass(b0: float, 
+            b1: float, 
+            diameterClass: str, 
+            dbhvalue: float) -> float:
    """ 
    Estimates the aboveground biomass of a tree using linear regression parameters, the "class" of the diameter,
    and the dbh value. 
@@ -127,4 +134,5 @@ def biomass(b0, b1, diameterClass, dbhvalue):
    else:
       raise ValueError
    abgBiomass = np.exp(b0 + b1 * np.log(diameter))
+
    return abgBiomass
