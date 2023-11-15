@@ -12,10 +12,10 @@ import numpy as np
 # Species means are taken from this resource:
 # https://www.fs.usda.gov/ne/newtown_square/publications/research_papers/pdfs/scanned/OCR/ne_rp649.pdf
 TREE_SPECIES_MEAN_DBH = {
-    "ash tree": 0.22,
-    "maple tree": 0.21,
-    "oak tree": 0.26,
-    "pine tree": 0.24,
+    "Ash": 0.22,
+    "Maple, sugar": 0.21,
+    "Oaks": 0.26,
+    "Pine, lodgepole": 0.24,
 }
 
 
@@ -79,7 +79,7 @@ def generate_tree_example(width: float = 12) -> dict:
     y_pos = random.uniform(0, width)
 
     # Sample a random species
-    species = random.choice(["ash tree", "oak tree", "maple tree", "pine tree"])
+    species = random.choice(list(TREE_SPECIES_MEAN_DBH.keys()))
 
     # Sample a random diameter
     dbh = random_tree_diameter(species, x_pos, y_pos, width)
@@ -109,11 +109,11 @@ def generate_tree_examples(num_examples: int, width: float = 12):
 
 if __name__ == "__main__":
     # Generate some examples and save to a file
-    num_examples = 10000
+    num_examples = 1000
     trees = generate_tree_examples(num_examples)
 
     data = {"trees": trees}
     json_data = json.dumps(data, indent=2)
 
-    with open(f"data/{num_examples}_trees.json", "w") as f:
+    with open(f"example_data/{num_examples}_trees.json", "w") as f:
         f.write(json_data)
