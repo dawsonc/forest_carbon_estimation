@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "forest-carbon-estimation"
+name = "forest-carbon"
 version = "0.0.1"
 description = "Estimating forest biomass carbon using drone data"
 authors = ["Charles Dawson <charles.dwsn@gmail.com>"]

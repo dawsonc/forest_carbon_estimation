@@ -1,0 +1,64 @@
+{
+  "trees": [
+    {
+      "dbh": 0.365,
+      "species": "pine tree",
+      "x_pos": 36.660971,
+      "y_pos": -9.247924
+    },
+    {
+      "dbh": 0.238,
+      "species": "pine tree",
+      "x_pos": 32.24458,
+      "y_pos": -9.108745
+    },
+    {
+      "dbh": 0.275,
+      "species": "pine tree",
+      "x_pos": 31.865738,
+      "y_pos": -2.414676
+    },
+    {
+      "dbh": 0.363,
+      "species": "maple tree",
+      "x_pos": 31.733061,
+      "y_pos": -1.673271
+    },
+    {
+      "dbh": 0.427,
+      "species": "ash tree",
+      "x_pos": 35.888578,
+      "y_pos": -8.034602
+    },
+    {
+      "dbh": 0.461,
+      "species": "maple tree",
+      "x_pos": 38.619749,
+      "y_pos": -8.228981
+    },
+    {
+      "dbh": 0.247,
+      "species": "ash tree",
+      "x_pos": 32.310385,
+      "y_pos": -7.259371
+    },
+    {
+      "dbh": 0.379,
+      "species": "pine tree",
+      "x_pos": 33.205599,
+      "y_pos": -8.409365
+    },
+    {
+      "dbh": 0.225,
+      "species": "ash tree",
+      "x_pos": 35.55517,
+      "y_pos": -9.847147
+    },
+    {
+      "dbh": 0.492,
+      "species": "maple tree",
+      "x_pos": 31.342445,
+      "y_pos": -7.369072
+    }
+  ]
+}
