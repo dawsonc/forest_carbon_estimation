@@ -113,13 +113,10 @@ def abg_biomass_model(group, taxa, spg, df):
                     Rsquared = float(df.iloc[i, 9])
                     diameterClass = df.iloc[i, 7]  # "drc" or "dbh"
 
-    if matches == 0:  # tree is not in the database or the user inupt is incorrect
-        return None
+    if spg is None or matches > 1:
+        return parameters
     else:
-        if spg is None or matches > 1:
-            return parameters
-        else:
-            return b0, b1, Rsquared, diameterClass
+        return b0, b1, Rsquared, diameterClass
 
 
 def biomass(b0, b1, diameterClass, dbhvalue):

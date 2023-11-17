@@ -1,8 +1,17 @@
+import os
 import unittest
 
 from forest_carbon import abg_biomass
 
-table5_filename = "./table5.csv"
+# Get the file path relative to the current file.
+# This file is in the tests directory, so we need to go up one level to get to the data directory.
+table5_filename = os.path.join(
+    os.path.dirname(__file__),
+    "..",
+    "forest_carbon",
+    "data",
+    "taxa_level_abg_model_parameters.csv",
+)
 
 
 class Test_abgBiomass(unittest.TestCase):
@@ -57,7 +66,7 @@ class Test_abgBiomass(unittest.TestCase):
 
     def test_abgBiomass(self):
         group = "Woodland"
-        taxa = "Cupressoceae2"
+        taxa = "Cupressoceae"
         spg = 0.7
         dbhvalue = 1
         df = abg_biomass.load_taxa_agb_model_data(table5_filename)
