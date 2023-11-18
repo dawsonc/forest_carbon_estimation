@@ -1,4 +1,4 @@
-from typing import List, Tuple, Union
+from typing import Union
 
 import numpy as np
 import pandas as pd
@@ -65,12 +65,12 @@ def load_taxa_agb_model_data(filename: str) -> pd.DataFrame:
 
 
 # Convenient type alias
-ModelParameters = Tuple[float, float, float, str]
+ModelParameters = tuple[float, float, float, str]
 
 
 def abg_biomass_model(
     group: str, taxa: str, spg: float, df: pd.DataFrame
-) -> Union[ModelParameters, List[ModelParameters]]:
+) -> Union[ModelParameters, list[ModelParameters]]:
     """
     Finds the corresponding linear regression model and "class" of the diameter of a tree
     by its group, taxa, and specific gravity, which is passed into the function by the user.
