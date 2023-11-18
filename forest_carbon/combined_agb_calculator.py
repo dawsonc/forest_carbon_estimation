@@ -2,11 +2,9 @@ import json
 import os
 from typing import Callable, Optional
 
-import abg_biomass
-import config
-import single_tree_estimation
-import tree_preprocessing
 from beartype import beartype
+
+from . import abg_biomass, config, single_tree_estimation, tree_preprocessing
 
 AGBModel = Callable[[float, float, float], float]
 
