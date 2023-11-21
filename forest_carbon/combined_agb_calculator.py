@@ -1,12 +1,12 @@
 import json
 import os
-from beartype import beartype
-from beartype.typing import Callable
+from typing import Callable, Optional
 
-import config
 import abg_biomass
+import config
 import single_tree_estimation
 import tree_preprocessing
+from beartype import beartype
 
 AGBModel = Callable[[float, float, float], float]
 
@@ -14,6 +14,7 @@ AGBModel = Callable[[float, float, float], float]
 @beartype
 def load_tree_data_from_json(data_path: str, 
                             preprocessing_species_info_path: str) -> list:
+
     """
     Load tree data from a JSON file and preprocess it.
 
@@ -27,10 +28,12 @@ def load_tree_data_from_json(data_path: str,
     tree_data = []
 
     try:
-        with open(data_path, 'r') as json_file:
+        with open(data_path, "r") as json_file:
             data = json.load(json_file)
+
             database = tree_preprocessing.create_common_name_dictionary(preprocessing_species_info_path)
             tree = tree_preprocessing.preprocess_tree_entries(trees=data['trees'], database=database)
+
 
             for tree_info in tree:
                 dbh, group, taxa, x_pos, y_pos, spg = (
@@ -67,14 +70,15 @@ def load_tree_data_from_json(data_path: str,
 
 @beartype
 def choosing_the_model(
-            group: str,
-            taxa: str,
-            dbh: float,
-            spg: float,
-            height,
-            df,
-            model_height: AGBModel,
-            model_no_height: AGBModel) -> float:
+    group: str,
+    taxa: str,
+    dbh: float,
+    spg: float,
+    height,
+    df,
+    model_height: AGBModel,
+    model_no_height: AGBModel,
+) -> float:
     """
     Decide which model to use and apply it to estimate AGB.
 
@@ -110,7 +114,9 @@ def choosing_the_model(
     # If no information is available, use the most generic and less accurate model,
     # estimating biomass based on environmental variables specific to the region.
     else:
-        biomass = single_tree_estimation.apply_AGB_model_no_height(model_no_height, spg, dbh, config.E)
+        biomass = single_tree_estimation.apply_AGB_model_no_height(
+            model_no_height, spg, dbh, config.E
+        )
 
     return biomass
 
@@ -119,6 +125,7 @@ def choosing_the_model(
 def apply_model(
     tree_data,
     path_to_taxa_level_parameters: str) -> list:
+
     """
     Apply the best model available for each tree data.
 
@@ -134,10 +141,15 @@ def apply_model(
     if tree_data is None:
         return None
 
+
     df = abg_biomass.load_taxa_agb_model_data(path_to_taxa_level_parameters)
     model_height = single_tree_estimation.create_AGB_function(coef=config.COEF, exp=config.EXP)
     model_no_height = single_tree_estimation.create_AGB_function_no_height(
-        const=config.CONST, coef_e=config.COEF_E, coef_rho=config.COEF_RHO, coef_d=config.COEF_D, coef_d_squared=config.COEF_D_SQUARED
+        const=config.CONST,
+        coef_e=config.COEF_E,
+        coef_rho=config.COEF_RHO,
+        coef_d=config.COEF_D,
+        coef_d_squared=config.COEF_D_SQUARED,
     )
 
     for tree in tree_data:
@@ -192,6 +204,5 @@ def run_model(working_directory_path: str,
         json.dump(processed_data, json_file, indent=2)
 
     print(f"Augmented data saved successfully.")
-
 
 

@@ -1,5 +1,8 @@
+from typing import Union
+
 import numpy as np
 import pandas as pd
+
 from typing import Tuple
 
 def load_taxa_agb_model_data(filename:str) -> pd.DataFrame:
@@ -62,6 +65,7 @@ def load_taxa_agb_model_data(filename:str) -> pd.DataFrame:
     return df
 
 
+<<<<<<< HEAD
 
 def abg_biomass_model(group:str, 
                      taxa: str, 
@@ -79,20 +83,12 @@ def abg_biomass_model(group:str,
       df - the dataframe called by the function load_taxa_agb_model_data
 
 
-    Args:
-       group (str) - The group of the tree
-       taxa (str) - The taxa of the tree
-       spg (float) - The specific gravity of the tree
-       df - the dataframe called by the function load_taxa_agb_model_data
-
     Returns:
-       b0 (float) - linear regression parameter for the corresponding model
-       b1 (float) - linear regression parameter for the corresponding model
-       R^2 (float) - linear regression parameter (error) for the corresponding model
-       diameterClass (str) - the "class" of the diameter for the corresponding model, either dbh or drc
-
+        b0 (float) - linear regression parameter for the corresponding model
+        b1 (float) - linear regression parameter for the corresponding model
+        R^2 (float) - linear regression parameter (error) for the corresponding model
+        diameterClass (str) - the "class" of the diameter for the corresponding model, either dbh or drc
     """
-
     num_rows, num_columns = df.shape
 
     matches = 0  # initialization of a variable to check if the user input matches a group and taxa column
@@ -129,6 +125,7 @@ def abg_biomass_model(group:str,
         return b0, b1, Rsquared, diameterClass
 
 
+
 def biomass(b0: float, 
             b1: float, 
             diameterClass: str, 
@@ -137,20 +134,18 @@ def biomass(b0: float,
    Estimates the aboveground biomass of a tree using linear regression parameters, the "class" of the diameter,
    and the dbh value. 
 
-
     Args:
-       b0 (float) - linear regression parameter for the corresponding model
-       b1 (float) - linear regression parameter for the corresponding model
-       diameterClass (str) - the "class" of the diameter for the corresponding model, either dbh or drc
-       dbhvalue (float) - the value for the dbh of the tree.
+        b0 (float) - linear regression parameter for the corresponding model
+        b1 (float) - linear regression parameter for the corresponding model
+        diameterClass (str) - the "class" of the diameter for the corresponding model, either dbh or drc
+        dbhvalue (float) - the value for the dbh of the tree.
 
     Returns:
-       abgBiomass (float) - the estimated aboveground biomass of the tree
+        abgBiomass (float) - the estimated aboveground biomass of the tree
 
     Raises:
-       ValueError
+        ValueError
     """
-
     if diameterClass == "drc":
         diameter = np.exp(
             0.36738 + 0.94932 * np.log(dbhvalue)
