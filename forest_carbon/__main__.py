@@ -1,19 +1,14 @@
-import combined_agb_calculator
-
-# Working directory name
-WORKING_DIRECTORY_NAME = (
-    "/Users/jankahamori/Documents/robotics-88/forest_carbon_estimation"
-)
+from forest_carbon import combined_agb_calculator
 
 # Path to the data to be augmented
-PATH_TO_DATA = "/Users/jankahamori/Documents/robotics-88/forest_carbon_estimation/forest_carbon_estimation/example_data/10_trees.json"
+PATH_TO_DATA = "./example_data/10_trees.json"
 
 # Path to where the file should be saved
-SAVE_PATH = "/Users/jankahamori/Documents/robotics-88/forest_carbon_estimation/forest_carbon_estimation/forest_carbon"
+SAVE_PATH = "./example_data/10_trees_processed.json"
 
 
 def main():
-    combined_agb_calculator.run_model(WORKING_DIRECTORY_NAME, PATH_TO_DATA, SAVE_PATH)
+    combined_agb_calculator.run_model(PATH_TO_DATA, SAVE_PATH)
 
 
 if __name__ == "__main__":

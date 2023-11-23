@@ -1,3 +1,5 @@
+import os
+
 # Config for create_AGB_function
 COEF = 0.0673
 EXP = 0.976
@@ -13,11 +15,11 @@ COEF_D_SQUARED = 0.0299
 E = 1.0
 
 # Path to the CSV file used to augment the data with the group and taxa name
-PATH_TO_TREE_PREPROCESSING_SPECIES_INFO = (
-    "forest_carbon_estimation/forest_carbon/data/tree_species_info.csv"
+PATH_TO_TREE_PREPROCESSING_SPECIES_INFO = os.path.join(
+    os.path.dirname(__file__), "data/tree_species_info.csv"
 )
 
 # Path to the file used in tree-specific biomass estimation
-PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS = (
-    "forest_carbon_estimation/forest_carbon/data/taxa_level_abg_model_parameters.csv"
+PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS = os.path.join(
+    os.path.dirname(__file__), "data/taxa_level_abg_model_parameters.csv"
 )

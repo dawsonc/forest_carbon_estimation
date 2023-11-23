@@ -1,5 +1,4 @@
 import json
-import os
 from typing import Callable, Optional
 
 from beartype import beartype
@@ -175,22 +174,17 @@ def apply_model(tree_data, path_to_taxa_level_parameters: str) -> Optional[list]
 
 
 @beartype
-def run_model(working_directory_path: str, input_data_path: str, save_output_path: str):
+def run_model(input_data_path: str, save_output_path: str):
     """
     Save the augmented data to the specified path.
 
     Args:
-    - working_directory_path (str): Path to the directory where the code is
-    - input_data_path (str): Path to the input data folder.
-    - save_output_path (str): Path to the folder where the augmented data should be saved.
+    - input_data_path (str): Path to the input data.
+    - save_output_path (str): Path where the augmented data should be saved.
     """
     # Loading the tree data and preprocessing it
-    preprocessing_species_info_path = os.path.join(
-        working_directory_path, config.PATH_TO_TREE_PREPROCESSING_SPECIES_INFO
-    )
-    path_to_taxa_level_parameters = os.path.join(
-        working_directory_path, config.PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS
-    )
+    preprocessing_species_info_path = config.PATH_TO_TREE_PREPROCESSING_SPECIES_INFO
+    path_to_taxa_level_parameters = config.PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS
     print(input_data_path)
     print(preprocessing_species_info_path)
     tree_data = load_tree_data_from_json(
@@ -201,8 +195,7 @@ def run_model(working_directory_path: str, input_data_path: str, save_output_pat
     processed_data = apply_model(tree_data, path_to_taxa_level_parameters)
 
     # Saving the augmented tree data into a new file
-    output_path = os.path.join(save_output_path, "processed_data.json")
-    with open(output_path, "w") as json_file:
+    with open(save_output_path, "w") as json_file:
         json.dump(processed_data, json_file, indent=2)
 
     print("Augmented data saved successfully.")
