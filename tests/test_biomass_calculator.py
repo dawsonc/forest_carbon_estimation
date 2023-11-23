@@ -14,19 +14,19 @@ class TestBiomassCalculator(unittest.TestCase):
     def setUp(self):
         # Create a temporary directory for testing
         self.test_dir = tempfile.mkdtemp()
+        self.test_json = os.path.join(self.test_dir, "test_data.json")
+        with open(self.test_json, "w") as f:
+            json.dump(
+                {"trees": [{"dbh": 10, "species": "Oaks", "x_pos": 1, "y_pos": 2}]}, f
+            )
 
     def tearDown(self):
         # Remove the temporary directory
         shutil.rmtree(self.test_dir)
 
     def test_load_tree_data_from_json(self):
-        test_json = os.path.join(self.test_dir, "test_data.json")
-        with open(test_json, "w") as f:
-            json.dump(
-                {"trees": [{"dbh": 10, "species": "Oaks", "x_pos": 1, "y_pos": 2}]}, f
-            )
         result = combined_agb_calculator.load_tree_data_from_json(
-            test_json,
+            self.test_json,
             os.path.join(
                 os.path.dirname(__file__),
                 "..",
@@ -94,7 +94,8 @@ class TestBiomassCalculator(unittest.TestCase):
                 ],
             ):
                 combined_agb_calculator.run_model(
-                    self.test_dir, self.test_dir, self.test_dir
+                    self.test_json,
+                    os.path.join(self.test_dir, "test_data_processed.csv"),
                 )
 
 
