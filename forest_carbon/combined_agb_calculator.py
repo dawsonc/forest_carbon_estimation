@@ -77,8 +77,8 @@ def choosing_the_model(
     spg: float,
     height,
     df,
-    model_height: AGBModel,
-    model_no_height: AGBModel,
+    model_height: Optional[AGBModel],
+    model_no_height: Optional[AGBModel],
 ) -> float:
     """
     Decide which model to use and apply it to estimate AGB.

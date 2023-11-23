@@ -26,42 +26,63 @@ class TestBiomassCalculator(unittest.TestCase):
                 {"trees": [{"dbh": 10, "species": "Oaks", "x_pos": 1, "y_pos": 2}]}, f
             )
         result = combined_agb_calculator.load_tree_data_from_json(
-            test_json, "path/to/species_info.csv"
+            test_json,
+            os.path.join(
+                os.path.dirname(__file__),
+                "..",
+                "forest_carbon",
+                "data",
+                "tree_species_info.csv",
+            ),
         )
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]["dbh"], 10)
 
     def test_choosing_the_model(self):
-        with patch("abg_biomass.abg_biomass_model", return_value=[1, 2, 3, 4]):
-            with patch("abg_biomass.biomass", return_value=42):
-                with patch("single_tree_estimation.apply_AGB_model", return_value=24):
+        with patch(
+            "forest_carbon.abg_biomass.abg_biomass_model", return_value=(1, 2, 3, 4)
+        ):
+            with patch("forest_carbon.abg_biomass.biomass", return_value=42.0):
+                with patch(
+                    "forest_carbon.single_tree_estimation.apply_AGB_model",
+                    return_value=24,
+                ):
                     with patch(
-                        "single_tree_estimation.apply_AGB_model_no_height",
+                        "forest_carbon.single_tree_estimation.apply_AGB_model_no_height",
                         return_value=18,
                     ):
                         result = combined_agb_calculator.choosing_the_model(
-                            "Group1", "Taxa1", 10, 0.5, 5, None, None, None
+                            "Group1", "Taxa1", 10.0, 0.5, 5, None, None, None
                         )
         self.assertEqual(result, 42)
 
     def test_apply_model(self):
-        with patch("your_module.choosing_the_model", return_value=42):
+        with patch(
+            "forest_carbon.combined_agb_calculator.choosing_the_model", return_value=42
+        ):
             test_data = [
                 {"group": "Group1", "taxa": "Taxa1", "dbh": 10, "spg": 0.5, "height": 5}
             ]
             result = combined_agb_calculator.apply_model(
-                test_data, "path/to/taxa_level_parameters.csv"
+                test_data,
+                os.path.join(
+                    os.path.dirname(__file__),
+                    "..",
+                    "forest_carbon",
+                    "data",
+                    "taxa_level_abg_model_parameters.csv",
+                ),
             )
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0].get("ABG value"), 42)
 
     def test_run_model(self):
         with patch(
-            "your_module.load_tree_data_from_json",
+            "forest_carbon.combined_agb_calculator.load_tree_data_from_json",
             return_value=[{"species": "Oaks", "dbh": 10, "x_pos": 1, "y_pos": 2}],
         ):
             with patch(
-                "your_module.apply_model",
+                "forest_carbon.combined_agb_calculator.apply_model",
                 return_value=[
                     {
                         "species": "Oaks",
