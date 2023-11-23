@@ -38,7 +38,7 @@ class Test_abgBiomass(unittest.TestCase):
         df = abg_biomass.load_taxa_agb_model_data(table5_filename)
         model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
         self.assertEqual(
-            model_para,
+            list(model_para.values()),
             [
                 (-1.9615, 2.1063, 0.76, "dbh"),
                 (-2.7765, 2.4195, 0.76, "dbh"),
@@ -57,11 +57,12 @@ class Test_abgBiomass(unittest.TestCase):
     def test_abgBiomass_model_5(self):
         group = "Hardwood"
         taxa = "Fabaceae"
-        spg = 0.5
+        spg = None
         df = abg_biomass.load_taxa_agb_model_data(table5_filename)
         model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
         self.assertEqual(
-            model_para, [(-2.5095, 2.6175, 0.81, "dbh"), (-2.5095, 2.5437, 0.81, "dbh")]
+            list(model_para.values()),
+            [(-2.5095, 2.6175, 0.81, "dbh"), (-2.5095, 2.5437, 0.81, "dbh")],
         )
 
     def test_abgBiomass(self):

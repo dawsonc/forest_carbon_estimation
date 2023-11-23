@@ -101,8 +101,8 @@ def choosing_the_model(
     # based on the species of the tree (tree_group, tree_taxa)
     species_result = abg_biomass.abg_biomass_model(group, taxa, spg, df)
     if species_result:
-        if isinstance(species_result, list):
-            b0, b1, Rsquared, diameterClass = species_result[0]
+        if isinstance(species_result, dict):
+            b0, b1, Rsquared, diameterClass = list(species_result.values())[0]
         else:
             b0, b1, Rsquared, diameterClass = species_result
         biomass = abg_biomass.biomass(b0, b1, diameterClass, dbh)

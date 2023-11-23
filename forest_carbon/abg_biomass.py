@@ -66,11 +66,16 @@ def load_taxa_agb_model_data(filename: str) -> pd.DataFrame:
 
 def abg_biomass_model(
     group: str, taxa: str, spg: float, df: pd.DataFrame
-) -> Union[list[Tuple[float, float, float, str]], Tuple[float, float, float, str]]:
+) -> Union[
+    dict[Tuple[str, str], Tuple[float, float, float, str]],
+    Tuple[float, float, float, str],
+]:
     """
     Finds the corresponding linear regression model and "class" of the diameter of a tree
     by its group, taxa, and specific gravity, which is passed into the function by the user.
-    If the user does not supply a specific gravity, returns a list of parameters for all specific gravity ranges for that group/taxa.
+    If the user does not supply a specific gravity, returns a dict
+    where the keys are the group and taxa of the tree and the values are a tuple of parameters
+    for all specific gravity ranges for that group/taxa.
 
     Args:
        group (str) - The group of the tree
@@ -85,12 +90,13 @@ def abg_biomass_model(
          R^2 (float) - linear regression parameter (error) for the corresponding model
          diameterClass (str) - the "class" of the diameter for the corresponding model, either dbh or drc
 
-         If multiple matches are found, return a list of such tuples.
+         If multiple matches are found, return a dictionary of such tuples.
     """
     num_rows, num_columns = df.shape
 
-    matches = 0  # initialization of a variable to check if the user input matches a group and taxa column
-    parameters = []  # initialization of list of parameters if spg is not supplied
+    matches = 0
+    exact_match = False  # initialization of a variable to check if the user input matches a group and taxa column
+    parameters = {}  # initialization of list of parameters if spg is not supplied
 
     for i in range(num_rows):
         taxaCol = df.iloc[i, 1]
@@ -104,23 +110,28 @@ def abg_biomass_model(
         if (
             df.iloc[i, 0] == group and taxa in taxaCol
         ):  # group/taxa name matches user input
-            parameters.append(
-                (df.iloc[i, 3], df.iloc[i, 4], df.iloc[i, 9], df.iloc[i, 7])
+            parameters[(df.iloc[i, 0], df.iloc[i, 1])] = (
+                df.iloc[i, 3],
+                df.iloc[i, 4],
+                df.iloc[i, 9],
+                df.iloc[i, 7],
             )
+            matches += 1
             if spg is not None:
                 if (
                     df.iloc[i, 10] <= spg < df.iloc[i, 11]
                 ):  # spg is in between the upper/lower bound of the group/taxa tree
-                    matches += 1
+                    exact_match = True  # should not have more than one exact match
                     b0 = float(df.iloc[i, 3])
                     b1 = float(df.iloc[i, 4])
                     Rsquared = float(df.iloc[i, 9])
                     diameterClass = df.iloc[i, 7]  # "drc" or "dbh"
-
-    if spg is None or matches > 1:
-        return parameters
-    else:
+    if matches == 0:  # tree is not in the database or the user inupt is incorrect
+        print("Check inputs, no matches found")
+    elif exact_match:
         return b0, b1, Rsquared, diameterClass
+
+    return parameters
 
 
 def biomass(b0: float, b1: float, diameterClass: str, dbhvalue: float) -> float:
