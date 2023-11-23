@@ -80,6 +80,6 @@ def apply_AGB_model_no_height(agb: AGBModel, rho: float, d: float, e: float) -> 
     Arguments:
     rho (float): wood specific gravity (g/cm^3)
     d (float): trunk diameter (cm)
-    e (float): environmental strees
+    e (float): environmental stressor
     """
     return agb(rho, d, e)

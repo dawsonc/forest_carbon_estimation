@@ -10,7 +10,9 @@ AGBModel = Callable[[float, float, float], float]
 
 
 @beartype
-def load_tree_data_from_json(data_path: str, csv_file_path: str) -> Optional[list]:
+def load_tree_data_from_json(
+    data_path: str, preprocessing_species_info_path: str
+) -> Optional[list]:
     """
     Load tree data from a JSON file and preprocess it.
 
@@ -19,14 +21,17 @@ def load_tree_data_from_json(data_path: str, csv_file_path: str) -> Optional[lis
     - csv_file_path (str): Path to the CSV file.
 
     Returns:
-    List: Processed tree data.
+    List: Processed tree data, or None if no tree data is found.
     """
     tree_data = []
 
     try:
         with open(data_path, "r") as json_file:
             data = json.load(json_file)
-            database = tree_preprocessing.create_common_name_dictionary(csv_file_path)
+
+            database = tree_preprocessing.create_common_name_dictionary(
+                preprocessing_species_info_path
+            )
             tree = tree_preprocessing.preprocess_tree_entries(
                 trees=data["trees"], database=database
             )
@@ -89,15 +94,26 @@ def choosing_the_model(
     - model_no_height (AGBModel): Model for estimating AGB when tree height is not available.
 
     Returns:
-    float: Estimated AGB.
+    float: Estimated Above-Ground Biomass (AGB).
     """
-    results = abg_biomass.abg_biomass_model(group, taxa, spg, df)
 
-    if results:
-        b0, b1, Rsquared, diameterClass = results
+    # If the tree species is known, use the most accurate model that estimates biomass
+    # based on the species of the tree (tree_group, tree_taxa)
+    species_result = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+    if species_result:
+        if isinstance(species_result, list):
+            b0, b1, Rsquared, diameterClass = species_result[0]
+        else:
+            b0, b1, Rsquared, diameterClass = species_result
         biomass = abg_biomass.biomass(b0, b1, diameterClass, dbh)
+
+    # If the tree has a given height but the species is not in our database, use a more generic model
+    # based on the tree's height; it does not require knowledge of the specific species.
     elif height:
         biomass = single_tree_estimation.apply_AGB_model(model_height, spg, dbh, height)
+
+    # If no information is available, use the most generic and less accurate model,
+    # estimating biomass based on environmental variables specific to the region.
     else:
         biomass = single_tree_estimation.apply_AGB_model_no_height(
             model_no_height, spg, dbh, config.E
@@ -107,9 +123,7 @@ def choosing_the_model(
 
 
 @beartype
-def apply_model(
-    path_to_data=config.PATH_TO_DATA, path_to_csv=config.PATH_TO_CSV
-) -> Optional[list]:
+def apply_model(tree_data, path_to_taxa_level_parameters: str) -> Optional[list]:
     """
     Apply the best model available for each tree data.
 
@@ -120,14 +134,11 @@ def apply_model(
     Returns:
     dict: Augmented tree data with AGB values.
     """
-    tree_data = load_tree_data_from_json(path_to_data, path_to_csv)
 
     if tree_data is None:
         return None
 
-    df = abg_biomass.load_taxa_agb_model_data(
-        config.PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS
-    )
+    df = abg_biomass.load_taxa_agb_model_data(path_to_taxa_level_parameters)
     model_height = single_tree_estimation.create_AGB_function(
         coef=config.COEF, exp=config.EXP
     )
@@ -164,17 +175,34 @@ def apply_model(
 
 
 @beartype
-def save_model(save_path=config.SAVE_PATH):
+def run_model(working_directory_path: str, input_data_path: str, save_output_path: str):
     """
     Save the augmented data to the specified path.
 
     Args:
-    - save_path (str): Path to the folder where the data should be saved.
+    - working_directory_path (str): Path to the directory where the code is
+    - input_data_path (str): Path to the input data folder.
+    - save_output_path (str): Path to the folder where the augmented data should be saved.
     """
-    processed_data = apply_model()
+    # Loading the tree data and preprocessing it
+    preprocessing_species_info_path = os.path.join(
+        working_directory_path, config.PATH_TO_TREE_PREPROCESSING_SPECIES_INFO
+    )
+    path_to_taxa_level_parameters = os.path.join(
+        working_directory_path, config.PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS
+    )
+    print(input_data_path)
+    print(preprocessing_species_info_path)
+    tree_data = load_tree_data_from_json(
+        input_data_path, preprocessing_species_info_path
+    )
 
-    path = os.path.join(save_path, "processed_data.json")
-    with open(path, "w") as json_file:
+    # Augmenting the tree data with Above-Ground Biomass (AGB) information
+    processed_data = apply_model(tree_data, path_to_taxa_level_parameters)
+
+    # Saving the augmented tree data into a new file
+    output_path = os.path.join(save_output_path, "processed_data.json")
+    with open(output_path, "w") as json_file:
         json.dump(processed_data, json_file, indent=2)
 
-    print("Data saved")
+    print("Augmented data saved successfully.")

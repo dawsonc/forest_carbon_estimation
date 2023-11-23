@@ -12,14 +12,12 @@ COEF_D_SQUARED = 0.0299
 # Environmental variable, to be changed to the relevant value based on the forest's position
 E = 1.0
 
-# Path to the data to be augmented
-PATH_TO_DATA = "/Users/jankahamori/Documents/robotics-88/forest_carbon_estimation/forest_carbon_estimation/example_data/10_trees.json"
-
 # Path to the CSV file used to augment the data with the group and taxa name
-PATH_TO_CSV = "/Users/jankahamori/Documents/robotics-88/forest_carbon_estimation/forest_carbon_estimation/forest_carbon/data/tree_species_info.csv"
+PATH_TO_TREE_PREPROCESSING_SPECIES_INFO = (
+    "forest_carbon_estimation/forest_carbon/data/tree_species_info.csv"
+)
 
 # Path to the file used in tree-specific biomass estimation
-PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS = "/Users/jankahamori/Documents/robotics-88/forest_carbon_estimation/forest_carbon_estimation/forest_carbon/data/taxa_level_abg_model_parameters.csv"
-
-# Path to where the file should be saved
-SAVE_PATH = "/Users/jankahamori/Documents/robotics-88/forest_carbon_estimation/forest_carbon_estimation/forest_carbon"
+PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS = (
+    "forest_carbon_estimation/forest_carbon/data/taxa_level_abg_model_parameters.csv"
+)
