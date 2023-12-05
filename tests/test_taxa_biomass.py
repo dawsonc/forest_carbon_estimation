@@ -39,11 +39,16 @@ class Test_abgBiomass(unittest.TestCase):
         model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
         self.assertEqual(
             model_para,
-            [
-                (-1.9615, 2.1063, 0.76, "dbh"),
-                (-2.7765, 2.4195, 0.76, "dbh"),
-                (-2.6327, 2.4757, 0.76, "dbh"),
-            ],
+            {
+                ("Conifer", "Cupressoceae < 0.30 spg"): (-1.9615, 2.1063, 0.76, "dbh"),
+                ("Conifer", "Cupressoceae 0.30-0.39 spg"): (
+                    -2.7765,
+                    2.4195,
+                    0.76,
+                    "dbh",
+                ),
+                ("Conifer", "Cupressoceae >= 0.40 spg"): (-2.6327, 2.4757, 0.76, "dbh"),
+            },
         )
 
     def test_abgBiomass_model_4(self):
@@ -57,11 +62,36 @@ class Test_abgBiomass(unittest.TestCase):
     def test_abgBiomass_model_5(self):
         group = "Hardwood"
         taxa = "Fabaceae"
-        spg = 0.5
+        spg = None
         df = abg_biomass.load_taxa_agb_model_data(table5_filename)
         model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
         self.assertEqual(
-            model_para, [(-2.5095, 2.6175, 0.81, "dbh"), (-2.5095, 2.5437, 0.81, "dbh")]
+            model_para,
+            {
+                ("Hardwood", "Fabaceae / Juglondoceoe,Carya"): (
+                    -2.5095,
+                    2.6175,
+                    0.81,
+                    "dbh",
+                ),
+                ("Hardwood", "Fabaceae / Juglondoceoe,other"): (
+                    -2.5095,
+                    2.5437,
+                    0.81,
+                    "dbh",
+                ),
+            },
+        )
+
+    def test_abgBiomass_model_6(self):
+        group = "Hardwood"
+        taxa = "Fagaceae evergreen"
+        spg = None
+        df = abg_biomass.load_taxa_agb_model_data(table5_filename)
+        model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+        self.assertEqual(
+            model_para,
+            {("Hardwood", "Fagaceae evergreen"): (-2.2198, 2.441, 0.84, "dbh")},
         )
 
     def test_abgBiomass(self):

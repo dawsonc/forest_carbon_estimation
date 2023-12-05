@@ -38,6 +38,7 @@ repos:
         exclude: >
               (?x)^(
                   .*\.ipynb
+                  poetry\.lock
               )$
         args:
           - '--write-changes'
