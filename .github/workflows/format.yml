@@ -23,6 +23,8 @@ jobs:
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.0
         id: precommit
+        with:
+          extra_args: --files forest_carbon/* scripts/* tests/*
 
       - name: Upload pre-commit changes
         if: failure() && steps.precommit.outcome == 'failure'
