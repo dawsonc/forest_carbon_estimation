@@ -168,7 +168,7 @@ def apply_model(tree_data, path_to_taxa_level_parameters: str) -> Optional[list]
             model_height=model_height,
             model_no_height=model_no_height,
         )
-        tree["ABG value"] = biomass
+        tree["AGB value"] = biomass
 
     return tree_data
 
@@ -184,7 +184,7 @@ def run_model(input_data_path: str, save_output_path: str):
     """
     # Loading the tree data and preprocessing it
     preprocessing_species_info_path = config.PATH_TO_TREE_PREPROCESSING_SPECIES_INFO
-    path_to_taxa_level_parameters = config.PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS
+    path_to_taxa_level_parameters = config.PATH_TO_TAXA_LEVEL_AGB_MODEL_PARAMETERS
     print(input_data_path)
     print(preprocessing_species_info_path)
     tree_data = load_tree_data_from_json(

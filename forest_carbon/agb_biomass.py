@@ -146,7 +146,7 @@ def biomass(b0: float, b1: float, diameterClass: str, dbhvalue: float) -> float:
          dbhvalue (float) - the value for the dbh of the tree.
 
      Returns:
-         abgBiomass (float) - the estimated aboveground biomass of the tree
+         agbBiomass (float) - the estimated aboveground biomass of the tree
 
      Raises:
          ValueError
@@ -159,5 +159,5 @@ def biomass(b0: float, b1: float, diameterClass: str, dbhvalue: float) -> float:
         diameter = dbhvalue
     else:
         raise ValueError
-    abgBiomass = np.exp(b0 + b1 * np.log(diameter))
-    return abgBiomass
+    agbBiomass = np.exp(b0 + b1 * np.log(diameter))
+    return agbBiomass

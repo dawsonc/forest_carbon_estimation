@@ -14,8 +14,8 @@ table5_filename = os.path.join(
 )
 
 
-class Test_abgBiomass(unittest.TestCase):
-    def test_abgBiomass_model_1(self):
+class Test_agbBiomass(unittest.TestCase):
+    def test_agbBiomass_model_1(self):
         group = "Conifer"
         taxa = "Cupressoceae"
         spg = 0.20
@@ -23,7 +23,7 @@ class Test_abgBiomass(unittest.TestCase):
         model_para = agb_biomass.agb_biomass_model(group, taxa, spg, df)
         self.assertEqual(model_para, (-1.9615, 2.1063, 0.76, "dbh"))
 
-    def test_abgBiomass_model_2(self):
+    def test_agbBiomass_model_2(self):
         group = "Conifer"
         taxa = "Cupressoceae"
         spg = 0.40
@@ -31,7 +31,7 @@ class Test_abgBiomass(unittest.TestCase):
         model_para = agb_biomass.agb_biomass_model(group, taxa, spg, df)
         self.assertEqual(model_para, (-2.6327, 2.4757, 0.76, "dbh"))
 
-    def test_abgBiomass_model_3(self):
+    def test_agbBiomass_model_3(self):
         group = "Conifer"
         taxa = "Cupressoceae"
         spg = None
@@ -51,7 +51,7 @@ class Test_abgBiomass(unittest.TestCase):
             },
         )
 
-    def test_abgBiomass_model_4(self):
+    def test_agbBiomass_model_4(self):
         group = "Woodland"
         taxa = "Fabaceae"
         spg = 0.5
@@ -59,7 +59,7 @@ class Test_abgBiomass(unittest.TestCase):
         model_para = agb_biomass.agb_biomass_model(group, taxa, spg, df)
         self.assertEqual(model_para, (-2.9255, 2.4109, 0.89, "drc"))
 
-    def test_abgBiomass_model_5(self):
+    def test_agbBiomass_model_5(self):
         group = "Hardwood"
         taxa = "Fabaceae"
         spg = None
@@ -83,7 +83,7 @@ class Test_abgBiomass(unittest.TestCase):
             },
         )
 
-    def test_abgBiomass_model_6(self):
+    def test_agbBiomass_model_6(self):
         group = "Hardwood"
         taxa = "Fagaceae evergreen"
         spg = None
@@ -94,7 +94,7 @@ class Test_abgBiomass(unittest.TestCase):
             {("Hardwood", "Fagaceae evergreen"): (-2.2198, 2.441, 0.84, "dbh")},
         )
 
-    def test_abgBiomass(self):
+    def test_agbBiomass(self):
         group = "Woodland"
         taxa = "Cupressoceae"
         spg = 0.7

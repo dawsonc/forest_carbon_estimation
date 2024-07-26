@@ -74,7 +74,7 @@ class TestBiomassCalculator(unittest.TestCase):
                 ),
             )
         self.assertEqual(len(result), 1)
-        self.assertEqual(result[0].get("ABG value"), 42)
+        self.assertEqual(result[0].get("AGB value"), 42)
 
     def test_run_model(self):
         with patch(
@@ -89,7 +89,7 @@ class TestBiomassCalculator(unittest.TestCase):
                         "dbh": 10,
                         "x_pos": 1,
                         "y_pos": 2,
-                        "ABG value": 42,
+                        "AGB value": 42,
                     }
                 ],
             ):
