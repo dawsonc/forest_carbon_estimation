@@ -64,7 +64,7 @@ def load_taxa_agb_model_data(filename: str) -> pd.DataFrame:
     return df
 
 
-def abg_biomass_model(
+def agb_biomass_model(
     group: str, taxa: str, spg: float, df: pd.DataFrame
 ) -> Union[
     dict[Tuple[str, str], Tuple[float, float, float, str]],

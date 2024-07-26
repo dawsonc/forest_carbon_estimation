@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from forest_carbon import abg_biomass
+from forest_carbon import agb_biomass
 
 # Get the file path relative to the current file.
 # This file is in the tests directory, so we need to go up one level to get to the data directory.
@@ -10,7 +10,7 @@ table5_filename = os.path.join(
     "..",
     "forest_carbon",
     "data",
-    "taxa_level_abg_model_parameters.csv",
+    "taxa_level_agb_model_parameters.csv",
 )
 
 
@@ -19,24 +19,24 @@ class Test_abgBiomass(unittest.TestCase):
         group = "Conifer"
         taxa = "Cupressoceae"
         spg = 0.20
-        df = abg_biomass.load_taxa_agb_model_data(table5_filename)
-        model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+        df = agb_biomass.load_taxa_agb_model_data(table5_filename)
+        model_para = agb_biomass.agb_biomass_model(group, taxa, spg, df)
         self.assertEqual(model_para, (-1.9615, 2.1063, 0.76, "dbh"))
 
     def test_abgBiomass_model_2(self):
         group = "Conifer"
         taxa = "Cupressoceae"
         spg = 0.40
-        df = abg_biomass.load_taxa_agb_model_data(table5_filename)
-        model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+        df = agb_biomass.load_taxa_agb_model_data(table5_filename)
+        model_para = agb_biomass.agb_biomass_model(group, taxa, spg, df)
         self.assertEqual(model_para, (-2.6327, 2.4757, 0.76, "dbh"))
 
     def test_abgBiomass_model_3(self):
         group = "Conifer"
         taxa = "Cupressoceae"
         spg = None
-        df = abg_biomass.load_taxa_agb_model_data(table5_filename)
-        model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+        df = agb_biomass.load_taxa_agb_model_data(table5_filename)
+        model_para = agb_biomass.agb_biomass_model(group, taxa, spg, df)
         self.assertEqual(
             model_para,
             {
@@ -55,16 +55,16 @@ class Test_abgBiomass(unittest.TestCase):
         group = "Woodland"
         taxa = "Fabaceae"
         spg = 0.5
-        df = abg_biomass.load_taxa_agb_model_data(table5_filename)
-        model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+        df = agb_biomass.load_taxa_agb_model_data(table5_filename)
+        model_para = agb_biomass.agb_biomass_model(group, taxa, spg, df)
         self.assertEqual(model_para, (-2.9255, 2.4109, 0.89, "drc"))
 
     def test_abgBiomass_model_5(self):
         group = "Hardwood"
         taxa = "Fabaceae"
         spg = None
-        df = abg_biomass.load_taxa_agb_model_data(table5_filename)
-        model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+        df = agb_biomass.load_taxa_agb_model_data(table5_filename)
+        model_para = agb_biomass.agb_biomass_model(group, taxa, spg, df)
         self.assertEqual(
             model_para,
             {
@@ -87,8 +87,8 @@ class Test_abgBiomass(unittest.TestCase):
         group = "Hardwood"
         taxa = "Fagaceae evergreen"
         spg = None
-        df = abg_biomass.load_taxa_agb_model_data(table5_filename)
-        model_para = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+        df = agb_biomass.load_taxa_agb_model_data(table5_filename)
+        model_para = agb_biomass.agb_biomass_model(group, taxa, spg, df)
         self.assertEqual(
             model_para,
             {("Hardwood", "Fagaceae evergreen"): (-2.2198, 2.441, 0.84, "dbh")},
@@ -99,9 +99,9 @@ class Test_abgBiomass(unittest.TestCase):
         taxa = "Cupressoceae"
         spg = 0.7
         dbhvalue = 1
-        df = abg_biomass.load_taxa_agb_model_data(table5_filename)
-        b0, b1, r2, dclass = abg_biomass.abg_biomass_model(group, taxa, spg, df)
-        self.assertEqual(round(abg_biomass.biomass(b0, b1, dclass, dbhvalue), 2), 0.15)
+        df = agb_biomass.load_taxa_agb_model_data(table5_filename)
+        b0, b1, r2, dclass = agb_biomass.agb_biomass_model(group, taxa, spg, df)
+        self.assertEqual(round(agb_biomass.biomass(b0, b1, dclass, dbhvalue), 2), 0.15)
 
 
 if __name__ == "__main__":

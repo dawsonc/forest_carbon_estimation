@@ -21,5 +21,5 @@ PATH_TO_TREE_PREPROCESSING_SPECIES_INFO = os.path.join(
 
 # Path to the file used in tree-specific biomass estimation
 PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS = os.path.join(
-    os.path.dirname(__file__), "data/taxa_level_abg_model_parameters.csv"
+    os.path.dirname(__file__), "data/taxa_level_agb_model_parameters.csv"
 )

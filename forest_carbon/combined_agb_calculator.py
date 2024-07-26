@@ -3,7 +3,7 @@ from typing import Callable, Optional
 
 from beartype import beartype
 
-from . import abg_biomass, config, single_tree_estimation, tree_preprocessing
+from . import agb_biomass, config, single_tree_estimation, tree_preprocessing
 
 AGBModel = Callable[[float, float, float], float]
 
@@ -98,13 +98,13 @@ def choosing_the_model(
 
     # If the tree species is known, use the most accurate model that estimates biomass
     # based on the species of the tree (tree_group, tree_taxa)
-    species_result = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+    species_result = agb_biomass.agb_biomass_model(group, taxa, spg, df)
     if species_result:
         if isinstance(species_result, dict):
             b0, b1, Rsquared, diameterClass = list(species_result.values())[0]
         else:
             b0, b1, Rsquared, diameterClass = species_result
-        biomass = abg_biomass.biomass(b0, b1, diameterClass, dbh)
+        biomass = agb_biomass.biomass(b0, b1, diameterClass, dbh)
 
     # If the tree has a given height but the species is not in our database, use a more generic model
     # based on the tree's height; it does not require knowledge of the specific species.
@@ -137,7 +137,7 @@ def apply_model(tree_data, path_to_taxa_level_parameters: str) -> Optional[list]
     if tree_data is None:
         return None
 
-    df = abg_biomass.load_taxa_agb_model_data(path_to_taxa_level_parameters)
+    df = agb_biomass.load_taxa_agb_model_data(path_to_taxa_level_parameters)
     model_height = single_tree_estimation.create_AGB_function(
         coef=config.COEF, exp=config.EXP
     )

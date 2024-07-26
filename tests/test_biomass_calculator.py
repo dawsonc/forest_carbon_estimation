@@ -40,9 +40,9 @@ class TestBiomassCalculator(unittest.TestCase):
 
     def test_choosing_the_model(self):
         with patch(
-            "forest_carbon.abg_biomass.abg_biomass_model", return_value=(1, 2, 3, 4)
+            "forest_carbon.agb_biomass.agb_biomass_model", return_value=(1, 2, 3, 4)
         ):
-            with patch("forest_carbon.abg_biomass.biomass", return_value=42.0):
+            with patch("forest_carbon.agb_biomass.biomass", return_value=42.0):
                 with patch(
                     "forest_carbon.single_tree_estimation.apply_AGB_model",
                     return_value=24,
@@ -70,7 +70,7 @@ class TestBiomassCalculator(unittest.TestCase):
                     "..",
                     "forest_carbon",
                     "data",
-                    "taxa_level_abg_model_parameters.csv",
+                    "taxa_level_agb_model_parameters.csv",
                 ),
             )
         self.assertEqual(len(result), 1)
