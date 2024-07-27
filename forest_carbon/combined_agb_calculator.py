@@ -3,7 +3,7 @@ from typing import Callable, Optional
 
 from beartype import beartype
 
-from . import abg_biomass, config, single_tree_estimation, tree_preprocessing
+from . import agb_biomass, config, single_tree_estimation, tree_preprocessing
 
 AGBModel = Callable[[float, float, float], float]
 
@@ -98,13 +98,13 @@ def choosing_the_model(
 
     # If the tree species is known, use the most accurate model that estimates biomass
     # based on the species of the tree (tree_group, tree_taxa)
-    species_result = abg_biomass.abg_biomass_model(group, taxa, spg, df)
+    species_result = agb_biomass.agb_biomass_model(group, taxa, spg, df)
     if species_result:
         if isinstance(species_result, dict):
             b0, b1, Rsquared, diameterClass = list(species_result.values())[0]
         else:
             b0, b1, Rsquared, diameterClass = species_result
-        biomass = abg_biomass.biomass(b0, b1, diameterClass, dbh)
+        biomass = agb_biomass.biomass(b0, b1, diameterClass, dbh)
 
     # If the tree has a given height but the species is not in our database, use a more generic model
     # based on the tree's height; it does not require knowledge of the specific species.
@@ -137,7 +137,7 @@ def apply_model(tree_data, path_to_taxa_level_parameters: str) -> Optional[list]
     if tree_data is None:
         return None
 
-    df = abg_biomass.load_taxa_agb_model_data(path_to_taxa_level_parameters)
+    df = agb_biomass.load_taxa_agb_model_data(path_to_taxa_level_parameters)
     model_height = single_tree_estimation.create_AGB_function(
         coef=config.COEF, exp=config.EXP
     )
@@ -168,7 +168,7 @@ def apply_model(tree_data, path_to_taxa_level_parameters: str) -> Optional[list]
             model_height=model_height,
             model_no_height=model_no_height,
         )
-        tree["ABG value"] = biomass
+        tree["AGB value"] = biomass
 
     return tree_data
 
@@ -184,7 +184,7 @@ def run_model(input_data_path: str, save_output_path: str):
     """
     # Loading the tree data and preprocessing it
     preprocessing_species_info_path = config.PATH_TO_TREE_PREPROCESSING_SPECIES_INFO
-    path_to_taxa_level_parameters = config.PATH_TO_TAXA_LEVEL_ABG_MODEL_PARAMETERS
+    path_to_taxa_level_parameters = config.PATH_TO_TAXA_LEVEL_AGB_MODEL_PARAMETERS
     print(input_data_path)
     print(preprocessing_species_info_path)
     tree_data = load_tree_data_from_json(

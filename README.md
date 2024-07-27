@@ -43,7 +43,7 @@ This project uses [`ruff`](https://github.com/astral-sh/ruff) for linting and au
 - `/forest_carbon`:
     - This folder includes the models that we developed to estimate the biomass of individual trees
     - `/data`: this includes data on different species of trees, such as wood specific gravity, which we use to determine parameters to our model
-    - `abg_biomass.py`: this file contains functions for calculating the above-ground biomass (AGB) of individual trees using a linear regression model with arguments based on the tree's species, DBH, and other parameters.
+    - `agb_biomass.py`: this file contains functions for calculating the above-ground biomass (AGB) of individual trees using a linear regression model with arguments based on the tree's species, DBH, and other parameters.
     - `combined_agb_calculator.py`: this script combines multiple AGB calculation methods and provides a unified interface to estimate the biomass of trees using different models based on what information is known about the tree.
     - `single_tree_estimation.py`: this script is another method for estimating the biomass of a single tree, which uses different parameters for an exponential model.
     - `tree_preprocessing.py`: this includes functions for preprocessing tree data, such as cleaning, normalizing, and preparing the data for biomass estimation models.
